@@ -85,10 +85,9 @@ describe('Create an order', () => {
         await iceCreamPlusButton.waitForDisplayed();
         await iceCreamPlusButton.click();
         await iceCreamPlusButton.click();
-
-        const iceCreamValue = $(page.iceCreamValue);
-        await iceCreamValue.waitForDisplayed();
-        await expect($(`div=${2}`)).toBeExisting();
+        const iceCreamValue = await $(page.iceCreamValue);
+        const iceCreamValueFinal = await iceCreamValue.getText();
+        await expect(iceCreamValueFinal).toBe("2");
         await browser.pause(3000); 
     })
 
